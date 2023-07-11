@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_doctor_booking/screens/auth/widgets/greetings.dart';
+import 'package:mobile_doctor_booking/screens/auth/widgets/round_auth_button.dart';
+import 'package:mobile_doctor_booking/screens/auth/widgets/submit_button.dart';
 
 import '../../shared/exports.dart';
 
@@ -39,19 +41,21 @@ class _SignInPageState extends State<SignInPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
                 "Welcome",
                 style: TextStyle(
                     color: Palette.kPrimaryColor,
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.w700),
               ),
               SizedBox(
-                height: mediaQuery.height * 0.05,
+                height: mediaQuery.height * 0.03,
               ),
               const Greetings(
-                greeting: 'Korem ipsum dolor sit amet, consectetur adipiscing elit.',
+                greeting:
+                    'Korem ipsum dolor sit amet, consectetur adipiscing elit.',
                 type: 'Sign In',
               ),
               Form(
@@ -59,9 +63,19 @@ class _SignInPageState extends State<SignInPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 16.0),
+                      const Text(
+                        'Email',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: mediaQuery.height * 0.01,
+                      ),
                       AuthTextFormField(
                         controller: _emailController,
                         validator: (value) => Validator.validateEmail(
@@ -69,7 +83,19 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         hint: 'Enter Your Email',
                       ),
-                      const SizedBox(height: 16.0),
+                      SizedBox(
+                        height: mediaQuery.height * 0.03,
+                      ),
+                      const Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: mediaQuery.height * 0.01,
+                      ),
                       AuthTextFormField(
                         obscureText: true,
                         controller: _passwordController,
@@ -80,87 +106,79 @@ class _SignInPageState extends State<SignInPage> {
                         sIcon: CupertinoIcons.eye_slash,
                       ),
                       SizedBox(
-                        height: mediaQuery.height * 0.045,
+                        height: mediaQuery.height * 0.01,
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: InkWell(
+                          onTap: () {},
+                          child: const Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
-                        height: mediaQuery.height * 0.06,
-                        width: mediaQuery.width * 0.8,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: const Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            // BoxButton(
-                            //   image: Images.rightarrow,
-                            //   onTap: (){
-                            //     // signIn();
-                            //   },
-                            // ),
-                          ],
-                        ),
-                      )
+                        height: mediaQuery.height * 0.05,
+                      ),
+                      SubmitButton(onPressed: () {}, text: 'Sign In'),
                     ],
                   ),
                 ),
               ),
               SizedBox(
-                height: mediaQuery.height * 0.1,
+                height: mediaQuery.height * 0.01,
               ),
-              const Align(
+              const Text(
+                'OR',
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(
+                height: mediaQuery.height * 0.01,
+              ),
+              Align(
                 alignment: Alignment.center,
-                child: Text(
-                  'Or sign up with',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
+                child: SizedBox(
+                  height: mediaQuery.height * 0.06,
+                  width: mediaQuery.width * 0.8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RoundAuthButton(
+                        image: Images.google,
+                        onTap: () {},
+                      ),
+                      SizedBox(
+                        width: mediaQuery.width * 0.04,
+                      ),
+                      RoundAuthButton(
+                        image: Images.apple,
+                        onTap: () {},
+                      ),
+                    ],
                   ),
                 ),
               ),
               SizedBox(
-                height: mediaQuery.height * 0.025,
+                height: mediaQuery.height * 0.014,
               ),
               InUpWidget(
                 link: 'Sign Up',
-                normal: 'No account',
+                normal: 'Don’t have an account',
                 onTap: () {
                   Get.to(
                     const SignUpPage(),
                   );
                 },
               ),
-              Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                    height: mediaQuery.height * 0.06,
-                    width: mediaQuery.width * 0.8,
-                    child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          // BoxButton(
-                          //   image: Images.google,
-                          //   onTap: () {},
-                          // ),
-                          // BoxButton(
-                          //   image: Images.twitter,
-                          //   onTap: () {},
-                          // ),
-                          // BoxButton(
-                          //   image: Images.apple,
-                          //   onTap: () {},
-                          // ),
-                          // BoxButton(
-                          //   image: Images.github,
-                          //   onTap: () {},
-                          // ),
-                        ])),
+              SizedBox(
+                height: mediaQuery.height * 0.018,
               ),
             ],
           ),

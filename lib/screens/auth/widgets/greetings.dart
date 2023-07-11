@@ -17,13 +17,13 @@ class Greetings extends StatelessWidget {
         children: [
           Text(
             type,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(
-            height: mediaQuery.height * 0.01,
+            height: mediaQuery.height * 0.012,
           ),
           SizedBox(
             width: mediaQuery.width * 0.8,

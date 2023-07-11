@@ -26,5 +26,7 @@ Shader authColors = const LinearGradient(
 class Images {
   static const String imagesPath = 'assets/images/';
   static const String splash = '${imagesPath}logo.png';
+  static const String google = '${imagesPath}search.png';
+  static const String apple = '${imagesPath}apple-logo.png';
 }
 
