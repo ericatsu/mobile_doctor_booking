@@ -10,7 +10,7 @@ class RoundAuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
     return Container(
-      height: mediaQuery.height * 0.08,
+      height: mediaQuery.height * 0.07,
       width: mediaQuery.width * 0.1,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -24,7 +24,7 @@ class RoundAuthButton extends StatelessWidget {
           child:  Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(7),
               child: Image.asset(image),
             ),
           ),

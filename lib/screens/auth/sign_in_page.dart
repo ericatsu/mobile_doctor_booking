@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_doctor_booking/screens/auth/widgets/greetings.dart';
-import 'package:mobile_doctor_booking/screens/auth/widgets/round_auth_button.dart';
-import 'package:mobile_doctor_booking/screens/auth/widgets/submit_button.dart';
-
-import '../../shared/exports.dart';
+import 'package:mobile_doctor_booking/shared/exports.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -124,7 +120,9 @@ class _SignInPageState extends State<SignInPage> {
                       SizedBox(
                         height: mediaQuery.height * 0.05,
                       ),
-                      SubmitButton(onPressed: () {}, text: 'Sign In'),
+                      SubmitButton(onPressed: () {
+                        Get.to(const HomePage());
+                      }, text: 'Sign In'),
                     ],
                   ),
                 ),

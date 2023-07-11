@@ -19,7 +19,7 @@ class Greetings extends StatelessWidget {
             type,
             style: const TextStyle(
               fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
             ),
           ),
           SizedBox(
