@@ -11,8 +11,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-
-  void initState(){
+  void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () => Get.to(const SignInPage()));
   }
@@ -28,10 +27,11 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-                height: mediaQuery.height * 0.25,
-                child: Image.asset(
-                  Images.splash,
-                )),
+              height: mediaQuery.height * 0.25,
+              child: Image.asset(
+                Images.splash,
+              ),
+            ),
             SizedBox(height: mediaQuery.height * 0.025),
             const Text(
               "D O C T O R",
