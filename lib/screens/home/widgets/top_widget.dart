@@ -13,6 +13,7 @@ class TopWidget extends StatelessWidget {
     return Row(
       children: [
         const CircleAvatar(
+          backgroundColor: Color.fromARGB(26, 158, 158, 158),
           radius: 20,
           backgroundImage: AssetImage(Images.splash),
         ),

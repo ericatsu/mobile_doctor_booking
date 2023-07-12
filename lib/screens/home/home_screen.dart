@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_doctor_booking/screens/home/widgets/search_widget.dart';
-import 'package:mobile_doctor_booking/screens/home/widgets/top_widget.dart';
 import 'package:mobile_doctor_booking/shared/exports.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,7 +21,13 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const TopWidget(hasNotification: true, name: 'EricAtsu',),
-              SearchWidget(),
+              SizedBox(
+                height: mediaQuery.height * 0.04,
+              ),
+              const SearchWidget(),
+              SizedBox(
+                height: mediaQuery.height * 0.03,
+              ),
             ],
           ),
         ),

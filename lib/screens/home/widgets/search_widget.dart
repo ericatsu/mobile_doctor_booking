@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:mobile_doctor_booking/shared/exports.dart';
 
 class SearchWidget extends StatefulWidget {
+  const SearchWidget({super.key});
+
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   bool _showClearIcon = false;
 
   @override
@@ -36,24 +37,45 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTextField(
-      decoration: BoxDecoration(
-        color: Colors.amber,
-        borderRadius: BorderRadius.circular(20),
+    final mediaQuery = SizeQuery(context);
+    return SizedBox(
+      height: mediaQuery.height * 0.06,
+      child: CupertinoTextField(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(50, 158, 158, 158),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        controller: _searchController,
+        placeholder: 'Search a Doctor',
+        placeholderStyle: const TextStyle(
+            fontSize: 15, color: Color.fromARGB(202, 158, 158, 158)),
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        prefix: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Icon(
+            CupertinoIcons.search,
+            size: 18,
+          ),
+        ),
+        suffix: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: _showClearIcon
+              ? GestureDetector(
+                  onTap: _clearSearch,
+                  child: const Icon(
+                    CupertinoIcons.xmark_circle_fill,
+                    size: 18,
+                  ),
+                )
+              : const Icon(
+                  CupertinoIcons.mic,
+                  size: 18,
+                ),
+        ),
+        onChanged: (value) {
+          // Handle search query changes
+        },
       ),
-      controller: _searchController,
-      placeholder: 'Search a Doctor',
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      prefix: Icon(Icons.search),
-      suffix: _showClearIcon
-          ? GestureDetector(
-              onTap: _clearSearch,
-              child: Icon(CupertinoIcons.xmark_circle_fill),
-            )
-          : Icon(CupertinoIcons.mic),
-      onChanged: (value) {
-        // Handle search query changes
-      },
     );
   }
 }
