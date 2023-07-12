@@ -28,5 +28,9 @@ class Images {
   static const String splash = '${imagesPath}logo.png';
   static const String google = '${imagesPath}search.png';
   static const String apple = '${imagesPath}apple-logo.png';
+  static const String avatar = '${imagesPath}avatar.png';
+  static const String doc1 = '${imagesPath}doc1.png';
+  static const String doc2 = '${imagesPath}doc2.png';
+  static const String doc3 = '${imagesPath}doc3.png';
 }
 

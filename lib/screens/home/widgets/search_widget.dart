@@ -38,43 +38,46 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
-    return SizedBox(
-      height: mediaQuery.height * 0.06,
-      child: CupertinoTextField(
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(50, 158, 158, 158),
-          borderRadius: BorderRadius.circular(6),
-        ),
-        controller: _searchController,
-        placeholder: 'Search a Doctor',
-        placeholderStyle: const TextStyle(
-            fontSize: 15, color: Color.fromARGB(202, 158, 158, 158)),
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        prefix: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Icon(
-            CupertinoIcons.search,
-            size: 18,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: SizedBox(
+        height: mediaQuery.height * 0.06,
+        child: CupertinoTextField(
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(50, 158, 158, 158),
+            borderRadius: BorderRadius.circular(6),
           ),
-        ),
-        suffix: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: _showClearIcon
-              ? GestureDetector(
-                  onTap: _clearSearch,
-                  child: const Icon(
-                    CupertinoIcons.xmark_circle_fill,
+          controller: _searchController,
+          placeholder: 'Search a Doctor',
+          placeholderStyle: const TextStyle(
+              fontSize: 15, color: Color.fromARGB(202, 158, 158, 158)),
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          prefix: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Icon(
+              CupertinoIcons.search,
+              size: 18,
+            ),
+          ),
+          suffix: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: _showClearIcon
+                ? GestureDetector(
+                    onTap: _clearSearch,
+                    child: const Icon(
+                      CupertinoIcons.xmark_circle_fill,
+                      size: 18,
+                    ),
+                  )
+                : const Icon(
+                    CupertinoIcons.mic,
                     size: 18,
                   ),
-                )
-              : const Icon(
-                  CupertinoIcons.mic,
-                  size: 18,
-                ),
+          ),
+          onChanged: (value) {
+            // Handle search query changes
+          },
         ),
-        onChanged: (value) {
-          // Handle search query changes
-        },
       ),
     );
   }

@@ -1,10 +1,14 @@
 //Pub
 export 'package:get/get.dart';
 
+
 //shared
 export 'package:mobile_doctor_booking/shared/constants.dart';
 export 'package:mobile_doctor_booking/shared/vadilators.dart';
 export 'package:mobile_doctor_booking/shared/nav_section.dart';
+
+//utils
+export 'package:mobile_doctor_booking/model/local_data.dart';
 
 //screens
 export 'package:mobile_doctor_booking/screens/auth/sign_in_page.dart';
@@ -24,5 +28,7 @@ export 'package:mobile_doctor_booking/screens/auth/widgets/round_auth_button.dar
 export 'package:mobile_doctor_booking/screens/auth/widgets/submit_button.dart';
 export 'package:mobile_doctor_booking/screens/home/widgets/search_widget.dart';
 export 'package:mobile_doctor_booking/screens/home/widgets/top_widget.dart';
+
+export 'package:mobile_doctor_booking/screens/home/widgets/carousel_card.dart';
 
 
