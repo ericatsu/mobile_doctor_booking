@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_doctor_booking/shared/exports.dart';
 
-class CarouselCard extends StatefulWidget {
+class DoctorsCard extends StatefulWidget {
   final LocalData cLocalData;
-  const CarouselCard({
+  const DoctorsCard({
     super.key,
     required this.cLocalData,
   });
 
   @override
-  State<CarouselCard> createState() => _CarouselCardState();
+  State<DoctorsCard> createState() => _CarouselCardState();
 }
 
-class _CarouselCardState extends State<CarouselCard>
+class _CarouselCardState extends State<DoctorsCard>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {

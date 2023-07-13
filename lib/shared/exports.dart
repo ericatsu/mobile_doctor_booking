@@ -1,5 +1,6 @@
 //Pub
 export 'package:get/get.dart';
+export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
 //shared
@@ -28,6 +29,8 @@ export 'package:mobile_doctor_booking/screens/auth/widgets/round_auth_button.dar
 export 'package:mobile_doctor_booking/screens/auth/widgets/submit_button.dart';
 export 'package:mobile_doctor_booking/screens/home/widgets/search_widget.dart';
 export 'package:mobile_doctor_booking/screens/home/widgets/top_widget.dart';
+export 'package:mobile_doctor_booking/screens/home/widgets/carousel_widget.dart';
+export 'package:mobile_doctor_booking/screens/home/widgets/category_widget.dart';
 
 export 'package:mobile_doctor_booking/screens/home/widgets/carousel_card.dart';
 
