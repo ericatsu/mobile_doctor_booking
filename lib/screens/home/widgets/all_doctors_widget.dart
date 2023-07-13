@@ -10,6 +10,7 @@ class AllDoctorsWidget extends StatefulWidget {
 }
 
 class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
@@ -43,7 +44,7 @@ class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
           Column(
             children: [
               SizedBox(
-                height: mediaQuery.height * 0.13,
+                height: mediaQuery.height * 0.28,
                 child: ListView.builder(
                     itemCount: localItems.length,
                     itemBuilder: (context, index) {
