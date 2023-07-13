@@ -22,17 +22,17 @@ class _HomePageState extends State<HomePage> {
           children: [
             const TopWidget(hasNotification: true, name: 'EricAtsu'),
             SizedBox(
-              height: mediaQuery.height * 0.04,
+              height: mediaQuery.height * 0.035,
             ),
             const SearchWidget(),
             SizedBox(
-              height: mediaQuery.height * 0.03,
+              height: mediaQuery.height * 0.025,
             ),
             const CarouselWidget(),
-            // SizedBox(
-            //   height: mediaQuery.height * 0.02,
-            // ),
-            // const CategoryWidget(),
+            SizedBox(
+              height: mediaQuery.height * 0.02,
+            ),
+            const CategoryWidget(),
             SizedBox(
               height: mediaQuery.height * 0.02,
             ),

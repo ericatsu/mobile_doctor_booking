@@ -39,12 +39,12 @@ class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
             ),
           ),
           SizedBox(
-            height: mediaQuery.height * 0.01,
+            height: mediaQuery.height * 0.011,
           ),
           Column(
             children: [
               SizedBox(
-                height: mediaQuery.height * 0.28,
+                height: mediaQuery.height * 0.20,
                 child: ListView.builder(
                     itemCount: localItems.length,
                     itemBuilder: (context, index) {

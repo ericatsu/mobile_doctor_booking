@@ -27,7 +27,7 @@ class _CarouselCardState extends State<DoctorsCard>
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Container(
         height: mediaQuery.height * 0.20,
         width: mediaQuery.width * 0.90,

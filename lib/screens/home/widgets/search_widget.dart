@@ -53,7 +53,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               fontSize: 15, color: Color.fromARGB(202, 158, 158, 158)),
           padding: const EdgeInsets.symmetric(vertical: 8),
           prefix: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 12),
             child: Icon(
               CupertinoIcons.search,
               size: 18,

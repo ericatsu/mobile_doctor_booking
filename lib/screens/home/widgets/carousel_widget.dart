@@ -15,13 +15,12 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
     return SizedBox(
-      height: mediaQuery.height * 0.28,
-      width: mediaQuery.width * 0.90,
+      height: mediaQuery.height * 0.26,
       child: Column(
         children: [
           SizedBox(
-            height: mediaQuery.height * 0.25,
-            width: mediaQuery.width * 0.86,
+            height: mediaQuery.height * 0.24,
+            width: mediaQuery.width * 0.90,
             child: PageView.builder(
               controller: _pageController,
               itemCount: localItems.length,
@@ -43,8 +42,8 @@ class _CarouselWidgetState extends State<CarouselWidget> {
               controller: _pageController,
               count: localItems.length,
               effect: const WormEffect(
-                dotWidth: 10,
-                dotHeight: 10,
+                dotWidth: 9,
+                dotHeight: 9,
                 dotColor: Colors.grey,
                 activeDotColor: Colors.blue,
               ),

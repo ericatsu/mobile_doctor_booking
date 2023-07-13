@@ -21,7 +21,7 @@ final ScrollController controller = ScrollController();
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
     return SizedBox(
-      height: mediaQuery.height * 0.125,
+      height: mediaQuery.height * 0.127,
       child: Column(
         children: [
           Padding(
@@ -57,13 +57,13 @@ final ScrollController controller = ScrollController();
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Container(
                           width: mediaQuery.width * 0.22,
                           decoration: const BoxDecoration(
                               shape: BoxShape.rectangle,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
+                                  BorderRadius.all(Radius.circular(6)),
                               color: Palette.kPrimaryColor),
                           child: InkWell(
                             onTap: () {},
