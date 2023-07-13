@@ -27,22 +27,20 @@ class _NavSectionState extends State<NavSection> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
+        height: mediaQuery.height * 0.09,
         elevation: 0,
         color: Colors.white,
         child: Container(
           color: Colors.transparent,
           width: mediaQuery.width,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                navIcon(CupertinoIcons.home, 0),
-                navIcon(CupertinoIcons.clock, 1),
-                navIcon(CupertinoIcons.chat_bubble, 2),
-                navIcon(CupertinoIcons.person, 3),
-              ],
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              navIcon(CupertinoIcons.home, 0),
+              navIcon(CupertinoIcons.clock, 1),
+              navIcon(CupertinoIcons.chat_bubble, 2),
+              navIcon(CupertinoIcons.person, 3),
+            ],
           ),
         ),
       ),
@@ -63,7 +61,9 @@ class _NavSectionState extends State<NavSection> {
       ),
       child: IconButton(
         icon: Icon(icon, size: 20.0),
-        color: Colors.black,
+        color: _selectedIndex == index
+            ? Colors.white
+            : Colors.black,
         onPressed: () {
           setState(() {
             _selectedIndex = index;

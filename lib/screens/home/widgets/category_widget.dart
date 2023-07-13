@@ -12,8 +12,7 @@ class CategoryWidget extends StatefulWidget {
 class _CategoryWidgetState extends State<CategoryWidget> {
 final ScrollController controller = ScrollController();
 
-  @override
-      Set<PointerDeviceKind> get dragDevices => { 
+  Set<PointerDeviceKind> get dragDevices => { 
         PointerDeviceKind.touch,
         PointerDeviceKind.mouse,
       };
