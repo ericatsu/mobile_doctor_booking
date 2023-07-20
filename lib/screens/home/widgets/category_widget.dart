@@ -10,9 +10,9 @@ class CategoryWidget extends StatefulWidget {
 }
 
 class _CategoryWidgetState extends State<CategoryWidget> {
-final ScrollController controller = ScrollController();
+  final ScrollController controller = ScrollController();
 
-  Set<PointerDeviceKind> get dragDevices => { 
+  Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
         PointerDeviceKind.mouse,
       };
@@ -25,7 +25,7 @@ final ScrollController controller = ScrollController();
       child: Column(
         children: [
           Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -89,4 +89,11 @@ final ScrollController controller = ScrollController();
   }
 }
 
-List<String> catergories = ['denteeth', 'Theripist', 'denteeth', 'Theripist', 'denteeth', 'Theripist'];
+List<String> catergories = [
+  'denteeth',
+  'Theripist',
+  'denteeth',
+  'Theripist',
+  'denteeth',
+  'Theripist'
+];

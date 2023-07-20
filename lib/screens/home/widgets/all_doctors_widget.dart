@@ -10,7 +10,6 @@ class AllDoctorsWidget extends StatefulWidget {
 }
 
 class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
-
   @override
   Widget build(BuildContext context) {
     final mediaQuery = SizeQuery(context);
@@ -18,7 +17,7 @@ class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
       child: Column(
         children: [
           Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +48,8 @@ class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
                     itemCount: localItems.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 8),
                         child: DoctorsCard(
                           cLocalData: localItems[index],
                         ),
@@ -63,5 +63,3 @@ class _AllDoctorsWidgetState extends State<AllDoctorsWidget> {
     );
   }
 }
-
-

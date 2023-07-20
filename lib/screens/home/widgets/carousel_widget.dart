@@ -25,8 +25,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
               controller: _pageController,
               itemCount: localItems.length,
               onPageChanged: (index) {
-                setState(() {
-                });
+                setState(() {});
               },
               itemBuilder: (context, index) {
                 return CarouselCard(
