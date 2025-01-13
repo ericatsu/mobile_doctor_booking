@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_doctor_booking/shared/exports.dart';
+import 'package:mobile_doctor_booking/shared/constants.dart';
 
 class TopWidget extends StatelessWidget {
   final String name;

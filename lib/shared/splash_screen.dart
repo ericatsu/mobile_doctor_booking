@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:mobile_doctor_booking/shared/constants.dart';
 import 'exports.dart';
 
 class SplashScreen extends StatefulWidget {

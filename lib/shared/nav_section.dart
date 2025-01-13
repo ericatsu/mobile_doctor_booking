@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_doctor_booking/screens/date&time/select_date_and_time_screen.dart';
+import 'package:mobile_doctor_booking/shared/constants.dart';
 import 'package:mobile_doctor_booking/shared/exports.dart';
 
 class NavSection extends StatefulWidget {
-  const NavSection({
-    super.key,
-  });
+  const NavSection({super.key});
 
   @override
   State<NavSection> createState() => _NavSectionState();
@@ -21,55 +20,95 @@ class _NavSectionState extends State<NavSection> {
     const ProfileScreen(),
   ];
 
+  final List<NavItem> _navItems = [
+    NavItem(icon: Icons.home_outlined, activeIcon: Icons.home, label: 'Home'),
+    NavItem(
+        icon: Icons.calendar_today_outlined,
+        activeIcon: Icons.calendar_today,
+        label: 'Schedule'),
+    NavItem(
+        icon: Icons.message_outlined,
+        activeIcon: Icons.message,
+        label: 'Messages'),
+    NavItem(
+        icon: Icons.person_outline, activeIcon: Icons.person, label: 'Profile'),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = SizeQuery(context);
     return Scaffold(
       body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomAppBar(
-        height: mediaQuery.height * 0.09,
-        elevation: 0,
-        color: Colors.white,
-        child: Container(
-          color: Colors.transparent,
-          width: mediaQuery.width,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              navIcon(CupertinoIcons.home, 0),
-              navIcon(CupertinoIcons.clock, 1),
-              navIcon(CupertinoIcons.chat_bubble, 2),
-              navIcon(CupertinoIcons.person, 3),
-            ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withValues(alpha: 0.2),
+              blurRadius: 10,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(
+                _navItems.length,
+                (index) => _buildNavItem(_navItems[index], index),
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget navIcon(IconData icon, int index) {
-    final mediaQuery = SizeQuery(context);
-    return Container(
-      height: mediaQuery.height * 0.06,
-      width: mediaQuery.width * 0.11,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: _selectedIndex == index
-            ? Palette.kPrimaryColor
-            : Colors.transparent,
-        border: Border.all(color: Colors.transparent),
-      ),
-      child: IconButton(
-        icon: Icon(icon, size: 20.0),
-        color: _selectedIndex == index
-            ? Colors.white
-            : Colors.black,
-        onPressed: () {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+  Widget _buildNavItem(NavItem item, int index) {
+    final isSelected = _selectedIndex == index;
+    return InkWell(
+      onTap: () => setState(() => _selectedIndex = index),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? Palette.kPrimaryColor.withValues(alpha: 0.1)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              isSelected ? item.activeIcon : item.icon,
+              color: isSelected ? Palette.kPrimaryColor : Colors.grey,
+              size: 24,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              item.label,
+              style: TextStyle(
+                fontSize: 12,
+                color: isSelected ? Palette.kPrimaryColor : Colors.grey,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+class NavItem {
+  final IconData icon;
+  final IconData activeIcon;
+  final String label;
+
+  NavItem({
+    required this.icon,
+    required this.activeIcon,
+    required this.label,
+  });
 }

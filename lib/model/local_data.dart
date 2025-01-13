@@ -1,56 +1,65 @@
-import 'package:mobile_doctor_booking/shared/exports.dart';
+class HealthTip {
+  final String title;
+  final String description;
+  final String imageUrl;
+  final String category;
 
-class LocalData {
-  final String docName;
-  final String docInfo;
-  final String ctitle;
-  final String cnote;
-  final String docImage;
-
-  const LocalData({
-    required this.ctitle,
-    required this.cnote,
-    required this.docImage,
-    required this.docName,
-    required this.docInfo,
+  const HealthTip({
+    required this.title,
+    required this.description,
+    required this.imageUrl,
+    required this.category,
   });
 }
 
-List<LocalData> localItems = [
-  const LocalData(
-    ctitle: 'Medical Center',
-    cnote:
-        'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.',
-    docImage: Images.doc1,
-    docInfo:
-        'Jorem ipsum dolor, consectetur adipiscing elit. Nunc v libero et velit interdum, ac  mattis.',
-    docName: 'Dr.Gee',
+final List<HealthTip> healthTips = [
+  const HealthTip(
+    title: "Eat More Colorful Vegetables",
+    description:
+        "Include at least 5 different colored vegetables in your daily diet for optimal nutrition.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Nutrition",
   ),
-  const LocalData(
-    ctitle: 'Medical Center 1',
-    cnote:
-        'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.',
-    docImage: Images.doc2,
-    docInfo:
-        'Jorem ipsum dolor, consectetur adipiscing elit. Nunc v libero et velit interdum, ac  mattis.',
-    docName: 'Dr.Pawan',
+  const HealthTip(
+    title: "Stay Hydrated",
+    description:
+        "Drink at least 8 glasses of water daily to maintain good health.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Hydration",
   ),
-  const LocalData(
-    ctitle: 'Medical Center 2',
-    cnote:
-        'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.',
-    docImage: Images.doc3,
-    docInfo:
-        'Jorem ipsum dolor, consectetur adipiscing elit. Nunc v libero et velit interdum, ac  mattis.',
-    docName: 'Dr.Wanitha',
+  const HealthTip(
+    title: "Stay Hydrated",
+    description:
+        "Drink at least 8 glasses of water daily to maintain good health.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Hydration",
   ),
-  const LocalData(
-    ctitle: 'Medical Center 3',
-    cnote:
-        'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.',
-    docImage: Images.doc2,
-    docInfo:
-        'Jorem ipsum dolor, consectetur adipiscing elit. Nunc v libero et velit interdum, ac  mattis.',
-    docName: 'Dr.Udara',
+  const HealthTip(
+    title: "Stay Hydrated",
+    description:
+        "Drink at least 8 glasses of water daily to maintain good health.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Hydration",
+  ),
+  const HealthTip(
+    title: "Stay Hydrated",
+    description:
+        "Drink at least 8 glasses of water daily to maintain good health.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Hydration",
+  ),
+  const HealthTip(
+    title: "Stay Hydrated",
+    description:
+        "Drink at least 8 glasses of water daily to maintain good health.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Hydration",
+  ),
+  const HealthTip(
+    title: "Stay Hydrated",
+    description:
+        "Drink at least 8 glasses of water daily to maintain good health.",
+    imageUrl: "assets/images/doc1.png",
+    category: "Hydration",
   ),
 ];
