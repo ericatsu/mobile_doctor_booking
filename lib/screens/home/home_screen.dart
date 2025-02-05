@@ -15,38 +15,28 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-  final mediaQuery = MediaQuery.of(context).size.height;
-    return SafeArea(
-      child: Scaffold(
-        body: RefreshIndicator(
+    return Scaffold(
+      body: SafeArea(
+        child: RefreshIndicator(
           onRefresh: () async {
             await Future.delayed(const Duration(seconds: 1));
           },
-          child:  CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: mediaQuery, 
-                  child: const Column(
-                    children: [
-                      TopWidget(
-                        hasNotification: true,
-                        name: 'John Doe',
-                      ),
-                      SizedBox(height: 20),
-                      DailyProgressWidget(),
-                      SizedBox(height: 16),
-                      HealthyHabitsCarousel(),
-                      SizedBox(height: 16),
-                      NutritionCategoryWidget(),
-                      SizedBox(height: 16),
-                      CommunityFeedWidget(),
-                      // Add some bottom padding to ensure content doesn't get hidden behind nav bar
-                      SizedBox(height: 80),
-                    ],
-                  ),
-                ),
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            children: const [
+              TopWidget(
+                hasNotification: true,
+                name: 'Beatrice Nettey',
               ),
+              SizedBox(height: 20),
+              DailyProgressWidget(),
+              SizedBox(height: 16),
+              HealthyHabitsCarousel(),
+              SizedBox(height: 16),
+              NutritionCategoryWidget(),
+              SizedBox(height: 16),
+              CommunityFeedWidget(),
+              SizedBox(height: 80),
             ],
           ),
         ),

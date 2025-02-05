@@ -1,61 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_doctor_booking/shared/constants.dart';
 
-class DailyProgressWidget extends StatelessWidget {
+class DailyProgressWidget extends StatefulWidget {
   const DailyProgressWidget({super.key});
+
+  @override
+  State<DailyProgressWidget> createState() => _DailyProgressWidgetState();
+}
+
+class _DailyProgressWidgetState extends State<DailyProgressWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _progressAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    );
+    _progressAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF4CAF50), Color(0xFF81C784)],
+        gradient: LinearGradient(
+          colors: [
+            Palette.kPrimaryColor,
+            Palette.kPrimaryColor.withValues(alpha: 0.8),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(25),
+        boxShadow: [
+          BoxShadow(
+            color: Palette.kPrimaryColor.withValues(alpha: 0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(
             children: [
-              Text(
+              const Text(
                 "Today's Progress",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Icon(Icons.more_horiz, color: Colors.white),
+              const Spacer(),
+              _buildStreakBadge(),
             ],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildProgressIndicator(
-                icon: Icons.local_drink,
-                label: "Water",
-                progress: 0.7,
-                value: "1.4L",
-                goal: "2L",
+                "Water",
+                0.7,
+                "1.4L",
+                "2L",
+                Icons.water_drop_rounded,
+                _progressAnimation,
               ),
               _buildProgressIndicator(
-                icon: Icons.restaurant,
-                label: "Calories",
-                progress: 0.6,
-                value: "1200",
-                goal: "2000",
+                "Calories",
+                0.6,
+                "1200",
+                "2000",
+                Icons.local_fire_department_rounded,
+                _progressAnimation,
               ),
               _buildProgressIndicator(
-                icon: Icons.eco,
-                label: "Veggies",
-                progress: 0.4,
-                value: "2",
-                goal: "5",
+                "Steps",
+                0.8,
+                "8k",
+                "10k",
+                Icons.directions_walk_rounded,
+                _progressAnimation,
               ),
             ],
           ),
@@ -64,42 +107,80 @@ class DailyProgressWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildProgressIndicator({
-    required IconData icon,
-    required String label,
-    required double progress,
-    required String value,
-    required String goal,
-  }) {
+  Widget _buildStreakBadge() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.local_fire_department_rounded,
+            color: Colors.orange.shade400,
+            size: 18,
+          ),
+          const SizedBox(width: 4),
+          const Text(
+            "7 Day Streak!",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProgressIndicator(
+    String label,
+    double progress,
+    String current,
+    String goal,
+    IconData icon,
+    Animation<double> animation,
+  ) {
     return Column(
       children: [
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            SizedBox(
-              height: 60,
-              width: 60,
-              child: CircularProgressIndicator(
-                value: progress,
-                backgroundColor: Colors.white.withOpacity(0.3),
-                valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-                strokeWidth: 8,
+        SizedBox(
+          height: 80,
+          width: 50,
+          child: Stack(
+            children: [
+              AnimatedBuilder(
+                animation: animation,
+                builder: (context, child) {
+                  return CircularProgressIndicator(
+                    value: progress * animation.value,
+                    backgroundColor: Colors.white.withValues(alpha: 0.2),
+                    valueColor:
+                        const AlwaysStoppedAnimation<Color>(Colors.white),
+                    strokeWidth: 8,
+                  );
+                },
               ),
-            ),
-            Icon(icon, color: Colors.white, size: 24),
-          ],
+              Center(
+                child: Icon(icon, color: Colors.white, size: 30),
+              ),
+            ],
+          ),
         ),
-        const SizedBox(height: 8),
         Text(
           label,
-          style: const TextStyle(color: Colors.white, fontSize: 12),
-        ),
-        Text(
-          "$value/$goal",
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 10,
-            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          "$current/$goal",
+          style: TextStyle(
+            color: Colors.white.withValues(alpha: 0.8),
+            fontSize: 13,
           ),
         ),
       ],

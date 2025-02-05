@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_doctor_booking/screens/date&time/select_date_and_time_screen.dart';
+import 'package:mobile_doctor_booking/screens/meal/meal_planning_screen.dart';
 import 'package:mobile_doctor_booking/shared/constants.dart';
 import 'package:mobile_doctor_booking/shared/exports.dart';
 
@@ -15,100 +15,71 @@ class _NavSectionState extends State<NavSection> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const SelectDateAndTimeScreen(),
-    const MessageScreen(),
+    const MealPlanningScreen(),
+    const ChallengesScreen(),
     const ProfileScreen(),
-  ];
-
-  final List<NavItem> _navItems = [
-    NavItem(icon: Icons.home_outlined, activeIcon: Icons.home, label: 'Home'),
-    NavItem(
-        icon: Icons.calendar_today_outlined,
-        activeIcon: Icons.calendar_today,
-        label: 'Schedule'),
-    NavItem(
-        icon: Icons.message_outlined,
-        activeIcon: Icons.message,
-        label: 'Messages'),
-    NavItem(
-        icon: Icons.person_outline, activeIcon: Icons.person, label: 'Profile'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedIndex],
+      extendBody: true,
       bottomNavigationBar: Container(
+        margin: const EdgeInsets.all(20),
+        height: 65,
         decoration: BoxDecoration(
           color: Colors.white,
+          borderRadius: BorderRadius.circular(35),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.2),
-              blurRadius: 10,
-              offset: const Offset(0, -2),
+              color: Colors.black.withValues(alpha: 0.1),
+              blurRadius: 30,
+              offset: const Offset(0, 10),
             ),
           ],
         ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(
-                _navItems.length,
-                (index) => _buildNavItem(_navItems[index], index),
-              ),
-            ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(35),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildNavItem(Icons.home_rounded, 0),
+              _buildNavItem(Icons.restaurant_menu_rounded, 1),
+              _buildNavItem(Icons.emoji_events_rounded, 2),
+              _buildNavItem(Icons.person_rounded, 3),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget _buildNavItem(NavItem item, int index) {
+  Widget _buildNavItem(IconData icon, int index) {
     final isSelected = _selectedIndex == index;
-    return InkWell(
+    return GestureDetector(
       onTap: () => setState(() => _selectedIndex = index),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? Palette.kPrimaryColor.withValues(alpha: 0.1)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              isSelected ? item.activeIcon : item.icon,
-              color: isSelected ? Palette.kPrimaryColor : Colors.grey,
-              size: 24,
+      behavior: HitTestBehavior.opaque,
+      child: SizedBox(
+        width: 60,
+        height: 60,
+        child: Center(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            padding: EdgeInsets.all(isSelected ? 12 : 8),
+            decoration: BoxDecoration(
+              color: isSelected ? Palette.kPrimaryColor : Colors.transparent,
+              borderRadius: BorderRadius.circular(30),
             ),
-            const SizedBox(height: 4),
-            Text(
-              item.label,
-              style: TextStyle(
-                fontSize: 12,
-                color: isSelected ? Palette.kPrimaryColor : Colors.grey,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-              ),
+            child: Icon(
+              icon,
+              color: isSelected ? Colors.white : Colors.grey,
+              size: 28,
             ),
-          ],
+          ),
         ),
       ),
     );
   }
-}
-
-class NavItem {
-  final IconData icon;
-  final IconData activeIcon;
-  final String label;
-
-  NavItem({
-    required this.icon,
-    required this.activeIcon,
-    required this.label,
-  });
 }

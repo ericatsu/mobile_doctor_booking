@@ -14,7 +14,7 @@ class HealthTip {
 
 final List<HealthTip> healthTips = [
   const HealthTip(
-    title: "Eat More Colorful Vegetables",
+    title: "Eat More Veges",
     description:
         "Include at least 5 different colored vegetables in your daily diet for optimal nutrition.",
     imageUrl: "assets/images/doc1.png",

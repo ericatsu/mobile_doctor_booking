@@ -50,52 +50,85 @@ class CommunityPostCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    post.achievement,
-                    style: const TextStyle(
-                      color: Colors.green,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
+                _buildAchievementBadge(post.achievement),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 12),
             Text(
               post.description,
               style: const TextStyle(fontSize: 14),
             ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Icon(
-                  Icons.favorite,
-                  color: Colors.red[400],
-                  size: 20,
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  '${post.likes}',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            ),
+            const SizedBox(height: 12),
+            _buildInteractionBar(post),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildAchievementBadge(String achievement) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.green.shade50,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.green.shade200),
+      ),
+      child: Text(
+        achievement,
+        style: TextStyle(
+          color: Colors.green.shade700,
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInteractionBar(CommunityPost post) {
+    return Row(
+      children: [
+        IconButton(
+          icon: Icon(
+            Icons.favorite,
+            color: Colors.red[400],
+            size: 20,
+          ),
+          onPressed: () {},
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(),
+        ),
+        const SizedBox(width: 5),
+        Text(
+          '${post.likes}',
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 14,
+          ),
+        ),
+        const Spacer(),
+        IconButton(
+          icon: const Icon(
+            Icons.comment_outlined,
+            size: 20,
+            color: Colors.grey,
+          ),
+          onPressed: () {},
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(),
+        ),
+        const SizedBox(width: 15),
+        IconButton(
+          icon: const Icon(
+            Icons.share_outlined,
+            size: 20,
+            color: Colors.grey,
+          ),
+          onPressed: () {},
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(),
+        ),
+      ],
     );
   }
 }

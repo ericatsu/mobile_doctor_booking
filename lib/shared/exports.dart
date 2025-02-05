@@ -14,7 +14,7 @@ export 'package:mobile_doctor_booking/model/local_data.dart';
 export 'package:mobile_doctor_booking/screens/home/home_screen.dart';
 export 'package:mobile_doctor_booking/shared/splash_screen.dart';
 
-export 'package:mobile_doctor_booking/screens/messaging/message_screen.dart';
+export 'package:mobile_doctor_booking/screens/challenges/challenges_screen.dart';
 export 'package:mobile_doctor_booking/screens/profile/profile_screen.dart';
 
 //widgets
